@@ -1,0 +1,55 @@
+# Insertion sort
+
+Percentage =[]
+number = int(input("Enter the Total Number of students:\n"))
+for i in range(number):
+    value = float(input("Enter the Percentage:\n "))
+    Percentage.append(value)
+for i in range(1,len(Percentage)):
+    key =Percentage[i]
+    j =i-1
+    while j>=0 and key<Percentage[j]:
+        Percentage[j+1] = Percentage[j]
+        j = j-1
+    else:
+        Percentage[j+1]=key
+
+print("The Percentage of Students in Ascending order:",Percentage)
+
+for i in range(5):
+    print(f"{i+1} Top Scorer:",Percentage[i],"\n")
+    
+
+# Shell sort
+
+def shellsort(alist):
+    gap = len(alist)//2
+    while gap>0:
+        for index in range(gap,len(Percentage)):
+            current_element = alist[index]
+            pos = index
+            while pos>=gap and current_element<alist[pos-gap]:
+                alist[pos]=alist[pos-gap]
+                pos = pos-gap
+            alist[pos] = current_element
+        gap = gap//2        
+
+
+
+Percentage = []
+number = int(input("Enter the Total Number of Students:\n"))
+for i in range(number):
+    value = float(input("Enter the Percentage:\n "))
+    Percentage.append(value)
+shellsort(Percentage)
+print(Percentage)    
+
+
+print("The Top five scores are:",Percentage)
+minimum = len(Percentage)-6
+maximum = len(Percentage)-1
+index = 1
+for i in range(maximum,minimum,-1):
+    if i>=0:
+        print(f"{index} Top Scorer:",Percentage[i],"\n")
+        index+=1
